@@ -5,8 +5,9 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 
@@ -19,10 +20,12 @@ public class SecondActivity extends Activity{
     ImageView image;
     Bitmap bMap;
     Bitmap bMapScaled;
+    Animation a;
 
     int licznik;
     int position;
     Intent i;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,16 +48,15 @@ public class SecondActivity extends Activity{
         dalej.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-
+                przesunDalej(v);
                 position++;
-                bMap = BitmapFactory.decodeResource(getResources(), Pic[position]);
-                bMapScaled = Bitmap.createScaledBitmap(bMap, 800, 550, true);
-                //image.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                image.setImageBitmap(bMapScaled);
-                licznik++;
-                if(position==14)
-                    position=0;
-
+                    bMap = BitmapFactory.decodeResource(getResources(), Pic[position]);
+                    bMapScaled = Bitmap.createScaledBitmap(bMap, 800, 550, true);
+                    //image.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                    image.setImageBitmap(bMapScaled);
+                    licznik++;
+                    if(position==14)
+                        position=0;
             }
         });
         wstecz.setOnClickListener(new View.OnClickListener() {
@@ -67,6 +69,7 @@ public class SecondActivity extends Activity{
                 bMapScaled = Bitmap.createScaledBitmap(bMap, 800, 550, true);
                 //image.setScaleType(ImageView.ScaleType.CENTER_CROP);
                 image.setImageBitmap(bMapScaled);
+                przesunWstecz(v);
                 licznik++;
                 if(position==0)
                     position=14;
@@ -89,4 +92,19 @@ public class SecondActivity extends Activity{
 
 
     }
+    public void przesunDalej(View v)
+    {
+
+        Animation a = AnimationUtils.loadAnimation(this, R.anim.przesuwaniedalej);
+        ImageView iv = (ImageView)findViewById(R.id.Image);
+        iv.startAnimation(a);
+    }
+    public void przesunWstecz(View v)
+    {
+
+        Animation a = AnimationUtils.loadAnimation(this, R.anim.przesuwaniewstecz);
+        ImageView iv = (ImageView)findViewById(R.id.Image);
+        iv.startAnimation(a);
+    }
+
 }
