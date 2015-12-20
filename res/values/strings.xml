@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">myapp3</string>
+    <string name="Wstecz">Wstecz</string>
+    <string name="Dalej">Dalej</string>
+    <string name="Numer_zdjecia">Numer zdjecia</string>
+    <string name="Koniec">Koniec</string>
+</resources>
