@@ -55,6 +55,7 @@ public class MyActivity extends Activity {
             Toast.makeText(MyActivity.this, "Wyświetlono " + licznik+ " zdjęć", Toast.LENGTH_LONG).show();
             licznik=0;
 
+
         }
     }
 }
